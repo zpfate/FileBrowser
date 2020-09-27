@@ -1,0 +1,6 @@
+framework module Pods_FileBrowser {
+  umbrella header "Pods-FileBrowser-umbrella.h"
+
+  export *
+  module * { export * }
+}

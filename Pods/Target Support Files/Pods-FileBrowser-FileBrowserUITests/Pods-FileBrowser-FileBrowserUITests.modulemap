@@ -1,0 +1,6 @@
+framework module Pods_FileBrowser_FileBrowserUITests {
+  umbrella header "Pods-FileBrowser-FileBrowserUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
