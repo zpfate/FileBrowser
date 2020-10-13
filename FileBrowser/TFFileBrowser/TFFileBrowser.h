@@ -10,6 +10,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TFFileBrowser : NSObject
 
+- (void)browserWithUrl:(NSString *)fileUrl;
+
 @end
 
 NS_ASSUME_NONNULL_END

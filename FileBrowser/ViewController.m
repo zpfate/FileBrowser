@@ -8,10 +8,16 @@
 #import "ViewController.h"
 #import <WebKit/WebKit.h>
 #import <AFNetworking/AFNetworking.h>
-
-@interface ViewController ()<WKUIDelegate,WKNavigationDelegate>
+#import <QuickLook/QuickLook.h>
+#import "TFFileBrowser.h"
+#import "TFPDFBrowserViewController.h"
+@interface ViewController ()<WKUIDelegate,WKNavigationDelegate, QLPreviewControllerDelegate, QLPreviewControllerDataSource>
 
 @property (nonatomic, strong) WKWebView *wkWebView;
+
+@property (nonatomic, strong) QLPreviewController *previewController;
+
+@property (nonatomic, strong) TFFileBrowser *browser;
 
 @end
 
@@ -26,9 +32,26 @@
 }
 
 - (void)setupViews {
+    
+    UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(previewAction)];
+    self.navigationItem.rightBarButtonItem = barItem;
+    
     [self.view addSubview:self.wkWebView];
 }
 
+- (void)previewAction {
+    
+    self.browser = [[TFFileBrowser alloc] init];
+    NSString *pdfPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"pdf"];
+
+    TFPDFBrowserViewController *browserVC = [[TFPDFBrowserViewController alloc] initWithPDFFile:pdfPath];
+    [self.navigationController pushViewController:browserVC animated:YES];
+    
+//    [self.browser browserWithUrl:pdfPath];
+    
+        
+//    [self.navigationController pushViewController:self.previewController animated:YES];
+}
 
 #pragma mark -- 加载本地PDF文件
 
@@ -62,6 +85,42 @@
     }];
 }
 
+#pragma mark -- Delegate
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+//    NSString *_webUrlStr = navigationAction.request.URL.absoluteString;
+//    NSString *lastName =[[_webUrlStr lastPathComponent] lowercaseString];
+    
+//    if ([lastName containsString:@".pdf"])
+//    {
+//        NSData *data = [NSData dataWithContentsOfURL:navigationAction.request.URL];
+//        [self.wkWebView loadData:data MIMEType:@"application/pdf" characterEncodingName:@"GBK" baseURL:[NSURL URLWithString:_webUrlStr]];
+//    }
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
+- (NSInteger)numberOfPreviewItemsInPreviewController:(QLPreviewController *)controller {
+    return 1;
+}
+
+- (id<QLPreviewItem>)previewController:(QLPreviewController *)controller previewItemAtIndex:(NSInteger)index {
+    NSString *pdfPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"pdf"];
+    return [NSURL fileURLWithPath:pdfPath];
+}
+
+
+
+#pragma mark -- Getter
+
+- (QLPreviewController *)previewController {
+    if (!_previewController) {
+        _previewController = [[QLPreviewController alloc] init];
+        _previewController.delegate = self;
+        _previewController.dataSource = self;
+    }
+    return _previewController;
+}
+
 - (WKWebView *)wkWebView {
     if (!_wkWebView) {
         WKUserContentController *userContentController = WKUserContentController.alloc.init;
@@ -75,17 +134,4 @@
 }
 
 
-- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
-{
-    NSString *_webUrlStr = navigationAction.request.URL.absoluteString;
-    NSString *lastName =[[_webUrlStr lastPathComponent] lowercaseString];
-    
-//    if ([lastName containsString:@".pdf"])
-//    {
-//        NSData *data = [NSData dataWithContentsOfURL:navigationAction.request.URL];
-//        [self.wkWebView loadData:data MIMEType:@"application/pdf" characterEncodingName:@"GBK" baseURL:[NSURL URLWithString:_webUrlStr]];
-//    }
-    decisionHandler(WKNavigationActionPolicyAllow);
-
-}
 @end
