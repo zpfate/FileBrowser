@@ -9,15 +9,14 @@
 #import <WebKit/WebKit.h>
 #import <AFNetworking/AFNetworking.h>
 #import <QuickLook/QuickLook.h>
-#import "TFFileBrowser.h"
-#import "TFPDFBrowserViewController.h"
+
+#import "TFPDFBrowserVC.h"
+
 @interface ViewController ()<WKUIDelegate,WKNavigationDelegate, QLPreviewControllerDelegate, QLPreviewControllerDataSource>
 
 @property (nonatomic, strong) WKWebView *wkWebView;
 
 @property (nonatomic, strong) QLPreviewController *previewController;
-
-@property (nonatomic, strong) TFFileBrowser *browser;
 
 @end
 
@@ -27,8 +26,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self setupViews];
-    [self loadPDFData];
+//    [self setupViews];
+    [self loadLocalPDFFile];
+    [self downloadFile];
 }
 
 - (void)setupViews {
@@ -41,16 +41,15 @@
 
 - (void)previewAction {
     
-    self.browser = [[TFFileBrowser alloc] init];
     NSString *pdfPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"pdf"];
 
-    TFPDFBrowserViewController *browserVC = [[TFPDFBrowserViewController alloc] initWithPDFFile:pdfPath];
-    [self.navigationController pushViewController:browserVC animated:YES];
+    TFPDFBrowserVC *browserVC = [[TFPDFBrowserVC alloc] initWithFilePath:pdfPath];
     
-//    [self.browser browserWithUrl:pdfPath];
+    UINavigationController *naVC = [[UINavigationController alloc] initWithRootViewController:browserVC];
+    naVC.modalPresentationStyle = UIModalPresentationFullScreen;
     
-        
-//    [self.navigationController pushViewController:self.previewController animated:YES];
+    [self presentViewController:naVC animated:YES completion:nil];
+    
 }
 
 #pragma mark -- 加载本地PDF文件
@@ -74,15 +73,29 @@
 
 - (void)downloadFile {
     
-    NSString *urlString = @"";
+    NSString *urlString = @"https://raw.githubusercontent.com/ZpFate/FileBrowser/master/FileBrowser/test.pdf";
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-    [[AFHTTPSessionManager manager] downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
-        
+    NSURLSessionDownloadTask *task = [[AFHTTPSessionManager manager] downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+        NSLog(@"downloadProgress == %@", downloadProgress);
     } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-        return [NSURL fileURLWithPath:@""];
+        
+        NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:response.suggestedFilename];
+        return [NSURL fileURLWithPath:fullPath];
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
         
+        NSString *path = filePath.path;
+        
+        TFPDFBrowserVC *browserVC = [[TFPDFBrowserVC alloc] initWithFilePath:path];
+        
+        UINavigationController *naVC = [[UINavigationController alloc] initWithRootViewController:browserVC];
+        naVC.modalPresentationStyle = UIModalPresentationFullScreen;
+        
+        [self presentViewController:naVC animated:YES completion:nil];
+        
+        NSLog(@"error = %@", error);
     }];
+    
+    [task resume];
 }
 
 #pragma mark -- Delegate

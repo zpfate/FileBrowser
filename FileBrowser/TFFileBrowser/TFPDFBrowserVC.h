@@ -1,5 +1,5 @@
 //
-//  TFPDFBrowserView.h
+//  TFPDFBrowserVC.h
 //  FileBrowser
 //
 //  Created by Twisted Fate on 2020/10/19.
@@ -9,13 +9,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TFPDFBrowserView : UIView
+@interface TFPDFBrowserVC : UIViewController
 
 - (instancetype)initWithFilePath:(NSString *)filePath;
-
-- (void)lastPage;
-
-- (void)nextPage;
 
 @end
 

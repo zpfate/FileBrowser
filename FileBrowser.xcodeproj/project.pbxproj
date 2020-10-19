@@ -16,9 +16,8 @@
 		5B254AC1251C86A00017CE22 /* FileBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B254AC0251C86A00017CE22 /* FileBrowserTests.m */; };
 		5B254ACC251C86A00017CE22 /* FileBrowserUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B254ACB251C86A00017CE22 /* FileBrowserUITests.m */; };
 		5B34203525208E2E008D7D53 /* test.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5B34203425208E2E008D7D53 /* test.pdf */; };
-		5BAF43D525358AE10088B69B /* TFFileBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BAF43D025358AE10088B69B /* TFFileBrowser.m */; };
-		5BAF43DB25358B190088B69B /* TFPDFBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BAF43DA25358B190088B69B /* TFPDFBrowserView.m */; };
-		5BAF43E425358D090088B69B /* TFPDFBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BAF43E325358D090088B69B /* TFPDFBrowserViewController.m */; };
+		5B81C187253D62F500D4E29A /* TFPDFBrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B81C186253D62F500D4E29A /* TFPDFBrowserVC.m */; };
+		5B81C18D253D63E100D4E29A /* TFPDFBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B81C18C253D63E100D4E29A /* TFPDFBrowserView.m */; };
 		5E6A2D6D7426D90872FF09EA /* Pods_FileBrowserTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E8A61DF5EE41E590A141E5 /* Pods_FileBrowserTests.framework */; };
 		A1F83E0177294E2C889F23F4 /* Pods_FileBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0BD044E067A8BDB03C159A /* Pods_FileBrowser.framework */; };
 		D0C574609F5D5F0BF216E5FB /* Pods_FileBrowser_FileBrowserUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58DAD67EA1DBD74DEDF66923 /* Pods_FileBrowser_FileBrowserUITests.framework */; };
@@ -63,12 +62,10 @@
 		5B254ACB251C86A00017CE22 /* FileBrowserUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileBrowserUITests.m; sourceTree = "<group>"; };
 		5B254ACD251C86A00017CE22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B34203425208E2E008D7D53 /* test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = test.pdf; sourceTree = "<group>"; };
-		5BAF43CD25358AE10088B69B /* TFFileBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFFileBrowser.h; sourceTree = "<group>"; };
-		5BAF43D025358AE10088B69B /* TFFileBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFFileBrowser.m; sourceTree = "<group>"; };
-		5BAF43D925358B190088B69B /* TFPDFBrowserView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFPDFBrowserView.h; sourceTree = "<group>"; };
-		5BAF43DA25358B190088B69B /* TFPDFBrowserView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFPDFBrowserView.m; sourceTree = "<group>"; };
-		5BAF43E225358D090088B69B /* TFPDFBrowserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFPDFBrowserViewController.h; sourceTree = "<group>"; };
-		5BAF43E325358D090088B69B /* TFPDFBrowserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFPDFBrowserViewController.m; sourceTree = "<group>"; };
+		5B81C185253D62F500D4E29A /* TFPDFBrowserVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFPDFBrowserVC.h; sourceTree = "<group>"; };
+		5B81C186253D62F500D4E29A /* TFPDFBrowserVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFPDFBrowserVC.m; sourceTree = "<group>"; };
+		5B81C18B253D63E100D4E29A /* TFPDFBrowserView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TFPDFBrowserView.h; sourceTree = "<group>"; };
+		5B81C18C253D63E100D4E29A /* TFPDFBrowserView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TFPDFBrowserView.m; sourceTree = "<group>"; };
 		6BB4ED4FBF1330FE87B63EA6 /* Pods-FileBrowserTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FileBrowserTests.release.xcconfig"; path = "Target Support Files/Pods-FileBrowserTests/Pods-FileBrowserTests.release.xcconfig"; sourceTree = "<group>"; };
 		925BC80C1134E3341179302F /* Pods-FileBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FileBrowser.release.xcconfig"; path = "Target Support Files/Pods-FileBrowser/Pods-FileBrowser.release.xcconfig"; sourceTree = "<group>"; };
 		C9E8A61DF5EE41E590A141E5 /* Pods_FileBrowserTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FileBrowserTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,12 +175,10 @@
 		5BAF43CC25358AE10088B69B /* TFFileBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				5BAF43CD25358AE10088B69B /* TFFileBrowser.h */,
-				5BAF43D025358AE10088B69B /* TFFileBrowser.m */,
-				5BAF43D925358B190088B69B /* TFPDFBrowserView.h */,
-				5BAF43DA25358B190088B69B /* TFPDFBrowserView.m */,
-				5BAF43E225358D090088B69B /* TFPDFBrowserViewController.h */,
-				5BAF43E325358D090088B69B /* TFPDFBrowserViewController.m */,
+				5B81C185253D62F500D4E29A /* TFPDFBrowserVC.h */,
+				5B81C186253D62F500D4E29A /* TFPDFBrowserVC.m */,
+				5B81C18B253D63E100D4E29A /* TFPDFBrowserView.h */,
+				5B81C18C253D63E100D4E29A /* TFPDFBrowserView.m */,
 			);
 			path = TFFileBrowser;
 			sourceTree = "<group>";
@@ -436,12 +431,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B81C187253D62F500D4E29A /* TFPDFBrowserVC.m in Sources */,
 				5B254AAC251C869D0017CE22 /* ViewController.m in Sources */,
+				5B81C18D253D63E100D4E29A /* TFPDFBrowserView.m in Sources */,
 				5B254AB7251C86A00017CE22 /* main.m in Sources */,
-				5BAF43D525358AE10088B69B /* TFFileBrowser.m in Sources */,
 				5B254AA9251C869D0017CE22 /* AppDelegate.m in Sources */,
-				5BAF43E425358D090088B69B /* TFPDFBrowserViewController.m in Sources */,
-				5BAF43DB25358B190088B69B /* TFPDFBrowserView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
